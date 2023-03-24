@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.Arrays;
@@ -77,10 +76,11 @@ public class MergeSort {
     }
 
 	public static void main(String args[]) throws Exception{
-		int n = (int)Math.pow(2, 20);
+		int n = (int)Math.pow(2, 5);
 		
-		final String NUM_FILENAME = "../static/random_numbers.txt";
-		final String RESULT_FILENAME = "../static/mergesort_sorted_numbers.txt";
+		final String CUR_DIR = System.getProperty("user.dir");
+		final String NUM_FILENAME = CUR_DIR + "/src/static/random_numbers.txt";
+		final String RESULT_FILENAME = CUR_DIR + "/src/static/mergesort_sorted_numbers.txt";
 		
 		// create an array of random numbers
 		Random rd = new Random();
