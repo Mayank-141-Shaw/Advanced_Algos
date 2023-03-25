@@ -10,17 +10,52 @@ import java.util.stream.Collectors;
 
 public class QuickSort {
 	
-	int partition(int[] arr, int l, int r) {
-		return 0;
+	int partition(int[] arr, int s, int e) {
+		// choose a pivot value
+		int pivot = arr[s];
+		
+		// count values smaller than pivot
+		int count = 0;
+		for(int i=s; i<=e; i++) {
+			if(arr[i] < pivot) count++;
+		}
+		
+		//get pivot index to swap
+		int pIndex = s+count;
+		arr[s] = arr[pIndex];
+		arr[pIndex] = pivot;
+		
+		// now we swap all lower and upper values in their subarrays
+		int i=s, j=e;
+		
+		while(i<pIndex && j>pIndex) {
+			if(arr[i] > pivot && arr[j] < pivot) {
+				int temp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = temp;
+				
+				i++;
+				j--;
+			}
+			else if(arr[i] < pivot) i++;
+			else if(arr[j] > pivot) j--;
+		}
+		
+		return pIndex;
 	}
 	
-	void sort(int[] arr, int l, int r) {
-		if(l<r) {
-			int pivot = partition(arr, l, r);
-			
-			sort(arr, l, pivot-1);
-			sort(arr, pivot, r);
-		}
+	void sort(int[] arr, int s, int e) {
+		// base case
+		if(s>=e) return;
+		
+		// find pivot
+		int pivot = partition(arr, s, e);
+		
+		// sort the left part
+		sort(arr, s, pivot-1);
+		
+		// sort the right part
+		sort(arr, pivot+1, e);
 	}
 
 	public static void main(String[] args) throws IOException{

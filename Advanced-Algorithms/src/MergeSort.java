@@ -79,7 +79,7 @@ public class MergeSort {
 		int n = (int)Math.pow(2, 5);
 		
 		final String CUR_DIR = System.getProperty("user.dir");
-		final String NUM_FILENAME = CUR_DIR + "/src/static/random_numbers.txt";
+		final String NUM_FILENAME = CUR_DIR + "/src/static/mergesort_random_numbers.txt";
 		final String RESULT_FILENAME = CUR_DIR + "/src/static/mergesort_sorted_numbers.txt";
 		
 		// create an array of random numbers
